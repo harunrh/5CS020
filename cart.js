@@ -24,22 +24,39 @@ function addToCart(product) {
     const existingItemIndex = cart.findIndex(item => item.id === product.id);
     
     if (existingItemIndex !== -1) {
-        // Product already in cart, increase quantity
-        cart[existingItemIndex].quantity += 1;
+        // Product already in cart
+        if (cart[existingItemIndex].category === 'digital') {
+            // For digital products, we don't increase quantity if it's already in cart
+            // Just show a notification instead
+            alert('This digital product is already in your cart. Digital products are limited to 1 per order.');
+        } else {
+            // For non-digital products, increase quantity
+            cart[existingItemIndex].quantity += 1;
+            
+            // Save updated cart to localStorage
+            localStorage.setItem('harunfitCart', JSON.stringify(cart));
+        }
     } else {
         // Product not in cart, add it with quantity 1
-        cart.push({
+        const newItem = {
             id: product.id,
             name: product.name,
             price: product.price,
             image: product.image,
             category: product.category,
             quantity: 1
-        });
+        };
+        
+        // If it's a clothing item with a selected size, add that info
+        if (product.selectedSize) {
+            newItem.selectedSize = product.selectedSize;
+        }
+        
+        cart.push(newItem);
+        
+        // Save updated cart to localStorage
+        localStorage.setItem('harunfitCart', JSON.stringify(cart));
     }
-    
-    // Save updated cart to localStorage
-    localStorage.setItem('harunfitCart', JSON.stringify(cart));
 }
 
 // Remove a product from the cart
@@ -60,9 +77,6 @@ function removeFromCart(productId) {
 
 // Update quantity of a product in the cart
 function updateCartItemQuantity(productId, newQuantity) {
-    // Ensure quantity is at least 1
-    newQuantity = Math.max(1, newQuantity);
-    
     // Get current cart from localStorage
     const cart = JSON.parse(localStorage.getItem('harunfitCart')) || [];
     
@@ -70,6 +84,14 @@ function updateCartItemQuantity(productId, newQuantity) {
     const itemIndex = cart.findIndex(item => item.id === productId);
     
     if (itemIndex !== -1) {
+        // For digital products, cap at 1
+        if (cart[itemIndex].category === 'digital') {
+            newQuantity = 1;
+        } else {
+            // For other products, ensure quantity is at least 1 and at most 10
+            newQuantity = Math.max(1, Math.min(10, newQuantity));
+        }
+        
         // Update quantity
         cart[itemIndex].quantity = newQuantity;
         
@@ -196,8 +218,16 @@ function createCartItemElement(item) {
     category.className = 'cart-item-category';
     category.textContent = capitalizeFirstLetter(item.category);
     
+    // Add size information if available (for clothing items)
     details.appendChild(name);
     details.appendChild(category);
+    
+    if (item.selectedSize) {
+        const size = document.createElement('p');
+        size.className = 'cart-item-size';
+        size.textContent = `Size: ${item.selectedSize}`;
+        details.appendChild(size);
+    }
     
     productInfo.appendChild(img);
     productInfo.appendChild(details);
@@ -219,12 +249,18 @@ function createCartItemElement(item) {
     quantityInput.type = 'number';
     quantityInput.value = item.quantity;
     quantityInput.min = 1;
-    quantityInput.max = 10;
+    quantityInput.max = item.category === 'digital' ? 1 : 10; // Limit digital products to 1
     quantityInput.readOnly = true;
     
     const increaseBtn = document.createElement('button');
     increaseBtn.className = 'quantity-btn increase';
     increaseBtn.textContent = '+';
+    
+    // Disable increase button for digital products if quantity is 1
+    if (item.category === 'digital' && item.quantity >= 1) {
+        increaseBtn.disabled = true;
+        increaseBtn.classList.add('disabled');
+    }
     
     quantityCell.appendChild(decreaseBtn);
     quantityCell.appendChild(quantityInput);
@@ -290,7 +326,16 @@ function initQuantityButtons() {
             const quantityInput = cartItem.querySelector('input');
             const currentQuantity = parseInt(quantityInput.value);
             
-            // Update quantity (max 10)
+            // Get the product from cart to check category
+            const cart = JSON.parse(localStorage.getItem('harunfitCart')) || [];
+            const product = cart.find(item => item.id === productId);
+            
+            if (product && product.category === 'digital' && currentQuantity >= 1) {
+                // Don't allow increasing digital products beyond 1
+                return;
+            }
+            
+            // Update quantity (max 10 for non-digital)
             const newQuantity = Math.min(currentQuantity + 1, 10);
             updateCartItemQuantity(productId, newQuantity);
         });
