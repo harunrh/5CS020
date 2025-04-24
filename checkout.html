@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - HARUNFIT</title>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header - same across all pages -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>HARUNFIT</h1>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-icon">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <h1>Checkout</h1>
+            
+            <!-- Checkout process progress bar -->
+            <div class="checkout-progress">
+                <div class="progress-step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-name">Cart</div>
+                </div>
+                <div class="progress-bar"></div>
+                <div class="progress-step active">
+                    <div class="step-number">2</div>
+                    <div class="step-name">Checkout</div>
+                </div>
+                <div class="progress-bar"></div>
+                <div class="progress-step">
+                    <div class="step-number">3</div>
+                    <div class="step-name">Confirmation</div>
+                </div>
+            </div>
+            
+            <div class="checkout-container">
+                <!-- Left side - checkout form -->
+                <div class="checkout-form-container">
+                    <form id="checkout-form">
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h2>Personal Information</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name *</label>
+                                    <input type="text" id="first-name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="last-name">Last Name *</label>
+                                    <input type="text" id="last-name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Shipping Information -->
+                        <div class="form-section">
+                            <h2>Shipping Address</h2>
+                            
+                            <div class="form-group">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address2">Apartment, suite, etc. (optional)</label>
+                                <input type="text" id="address2">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City/Town *</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="postcode">Postcode *</label>
+                                    <input type="text" id="postcode" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <select id="country" required>
+                                    <option value="">Select your country</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Information -->
+                        <div class="form-section">
+                            <h2>Payment Information</h2>
+                            
+                            <div class="form-group">
+                                <label for="card-name">Name on Card *</label>
+                                <input type="text" id="card-name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="card-number">Card Number *</label>
+                                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry-date">Expiry Date *</label>
+                                    <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cvv">CVV *</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="3" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-place-order">Place Order</button>
+                    </form>
+                </div>
+                
+                <!-- Right side - order summary -->
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    
+                    <!-- This div will be populated by JavaScript -->
+                    <div id="checkout-items">
+                        <!-- Example checkout item structure 
+                        <div class="checkout-item">
+                            <div class="checkout-item-image">
+                                <img src="images/products/tshirt.jpg" alt="HARUNFIT T-shirt">
+                                <span class="checkout-item-quantity">1</span>
+                            </div>
+                            <div class="checkout-item-details">
+                                <h4>HARUNFIT T-shirt</h4>
+                                <p class="checkout-item-price">£24.99</p>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    
+                    <div class="checkout-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="checkout-subtotal">£0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping:</span>
+                            <span id="checkout-shipping">£3.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="checkout-total">£0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer - same across all pages -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HARUNFIT</h2>
+                    <p>Your fitness journey starts here</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@harunfit.com</p>
+                    <p>Phone: +44 1234 567890</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HARUNFIT. All rights reserved. This is a student project.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+    <!-- Cart JavaScript -->
+    <script src="cart.js"></script>
+    <!-- Checkout JavaScript -->
+    <script src="checkout.js"></script>
+</body>
+</html>

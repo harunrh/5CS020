@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All Products - HARUNFIT</title>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header - copied from index to maintain consistency -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>HARUNFIT</h1>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-icon">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Shop Banner -->
+    <section class="shop-banner">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Find everything you need for your fitness journey</p>
+        </div>
+    </section>
+    
+    <!-- Product Filtering & Sorting Section -->
+    <section class="product-filters">
+        <div class="container">
+            <div class="filter-container">
+                <div class="category-filters">
+                    <h3>Categories</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">All Products</button>
+                        <button class="filter-btn" data-category="clothing">Clothing</button>
+                        <button class="filter-btn" data-category="digital">Digital Products</button>
+                        <button class="filter-btn" data-category="supplements">Supplements</button>
+                    </div>
+                </div>
+                
+                <div class="sort-options">
+                    <label for="sort-select">Sort by:</label>
+                    <select id="sort-select">
+                        <option value="default">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Grid - will be populated via JavaScript -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid" id="products-container">
+                <!-- Products will be dynamically generated here using JavaScript -->
+                
+                <!-- Example of product card structure for reference -->
+                <!--
+                <div class="product-card" data-category="clothing">
+                    <div class="product-image">
+                        <img src="images/products/tshirt.jpg" alt="HARUNFIT T-shirt">
+                    </div>
+                    <div class="product-details">
+                        <h3>HARUNFIT T-shirt</h3>
+                        <p class="product-category">Clothing</p>
+                        <p class="product-description">Comfortable, breathable fabric perfect for workouts.</p>
+                        <p class="product-price">£24.99</p>
+                        <button class="btn btn-add-cart" data-id="1">Add to Cart</button>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- No Products Found Message (hidden by default, shown if filters return no results) -->
+    <div class="no-products-message" id="no-products-message" style="display: none;">
+        <div class="container">
+            <h3>No products found</h3>
+            <p>Try changing your filter settings to see more products.</p>
+            <button class="btn btn-secondary" id="reset-filters">Reset Filters</button>
+        </div>
+    </div>
+    
+    <!-- Footer - copied from index.html for consistency -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>HARUNFIT</h2>
+                    <p>Your fitness journey starts here</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@harunfit.com</p>
+                    <p>Phone: +44 1234 567890</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HARUNFIT. All rights reserved. This is a student project.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+    <!-- Products JavaScript - product data and rendering functions -->
+    <script src="products.js"></script>
+    <!-- Cart JavaScript -->
+    <script src="cart.js"></script>
+</body>
+</html>

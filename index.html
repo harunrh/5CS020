@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARUNFIT - Fitness Apparel & Supplements</title>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Roboto & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- Logo in header -->
+                <img src="images/harunfit-logo.png" alt="HARUNFIT" style="height: 40px;">
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-icon">
+                <a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <!-- Mobile menu button (hidden on desktop) -->
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section with banner -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Logo in hero section -->
+                <div class="hero-logo">
+                    <img src="images/harunfit-logo-white.png" alt="HARUNFIT Logo" style="max-width: 250px; margin: 0 auto; display: block;">
+                </div>
+                <h2>Transform Your Fitness Journey</h2>
+                <p>Quality apparel, supplements, and workout guides for your fitness goals.</p>
+                <a href="products.html" class="btn btn-primary">Shop Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Categories Section -->
+    <section class="featured-categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            
+            <div class="categories-grid">
+                <!-- Category 1: Clothing -->
+                <div class="category-card">
+                    <img src="images/category-clothing.png" alt="Fitness Clothing">
+                    <h3>Clothing</h3>
+                    <p>Performance apparel designed for your workouts</p>
+                    <a href="products.html?category=clothing" class="btn btn-secondary">View Products</a>
+                </div>
+                
+                <!-- Category 2: Digital Products -->
+                <div class="category-card">
+                    <img src="images/category-digital.png" alt="Digital Products">
+                    <h3>Digital Products</h3>
+                    <p>Programs and guides to optimize your results</p>
+                    <a href="products.html?category=digital" class="btn btn-secondary">View Products</a>
+                </div>
+                
+                <!-- Category 3: Supplements -->
+                <div class="category-card">
+                    <img src="images/category-supplements.png" alt="Supplements">
+                    <h3>Supplements</h3>
+                    <p>Quality nutrition to fuel your performance</p>
+                    <a href="products.html?category=supplements" class="btn btn-secondary">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section with minimal info -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About HARUNFIT</h2>
+                <p>HARUNFIT is dedicated to providing high-quality fitness products to help you achieve your health and fitness goals. Our brand combines stylish apparel, effective supplements, and expert-designed digital programs to support your fitness journey.</p>
+                <p>Founded with a passion for fitness and a commitment to quality, we strive to offer products that enhance your workout experience and help you reach your personal best.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Signup (can be made functional with localStorage) -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Community</h2>
+            <p>Subscribe to receive updates on new products and exclusive offers</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- Logo in footer -->
+                    <img src="images/harunfit-logo-white.png" alt="HARUNFIT" style="height: 40px; margin-bottom: 10px;">
+                    <p>Your fitness journey starts here</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact" id="contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@harunfit.com</p>
+                    <p>Phone: +44 1234 567890</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HARUNFIT. All rights reserved. This is a student project.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Main JavaScript file -->
+    <script src="script.js"></script>
+    <!-- separate file for handling cart functionality -->
+    <script src="cart.js"></script>
+</body>
+</html>
