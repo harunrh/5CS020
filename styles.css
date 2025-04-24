@@ -282,10 +282,13 @@ header .container {
     transform: translateY(-5px);
 }
 
+
 .category-card img {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain; /* Change from 'cover' to 'contain' */
+    background-color: #f8f8f8; /* Add a light background */
+    padding: 10px; /* Add some padding */
 }
 
 .category-card h3 {
@@ -1479,4 +1482,16 @@ footer {
 .hero-logo img {
     max-width: 250px;
     margin: 0 auto;
+}
+
+
+.cart-item-size {
+    color: #555;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.quantity-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
