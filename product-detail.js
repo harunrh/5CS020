@@ -93,7 +93,7 @@ function initSizeSelection(sizes) {
     }
 }
 
-// Initialize add to cart button
+
 function initAddToCartButton(product) {
     const addToCartBtn = document.getElementById('add-to-cart-btn');
     
@@ -113,13 +113,9 @@ function initAddToCartButton(product) {
         // Create product object to add to cart
         const productToAdd = {
             ...product,
+            selectedSize: selectedSize, // Will be null for non-clothing items
             quantity: 1
         };
-        
-        // Add selected size for clothing
-        if (selectedSize) {
-            productToAdd.selectedSize = selectedSize;
-        }
         
         // Add to cart
         addToCart(productToAdd);
